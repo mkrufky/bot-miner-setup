@@ -37,4 +37,6 @@ As an alternative to the manual installation steps described above, the Livepeer
 * [docker-compose setup: b/o/t rinkeby testnet](ubuntu/cuda-docker-compose-setup-b_o_t-rinkeby)
 * [docker-compose setup: b/ot rinkeby testnet](ubuntu/cuda-docker-compose-setup-b_ot-rinkeby)
 
+Examples are provided that include Prometheus and Grafana containers for monitoring of the above four configurations.  See [prometheus-grafana](prometheus-grafana/)
+
 For some basic information about running benchmarks, see [benchmarks](benchmarks.md)
