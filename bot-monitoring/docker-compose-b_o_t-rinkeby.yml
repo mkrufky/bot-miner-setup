@@ -2,25 +2,34 @@ version: '3.5'
 services:
   orchestrator:
     image: livepeer/go-livepeer:master
-    command: '-orchestrator --network offchain -orchSecret test -serviceAddr orchestrator:8935 -orchAddr 0.0.0.0'
+    command: '-orchestrator -network rinkeby -orchSecret /secret.txt -serviceAddr orchestrator:8935 -orchAddr 0.0.0.0 -pricePerUnit 1 -initializeRound=true -ethPassword=/root/pw.txt -cliAddr 0.0.0.0:7935 -monitor=true'
     ports:
       - 7935:7935
       - 8935:8935
+    volumes:
+      - orchroot:/root
+      - ./pw:/root/pw.txt
+      - ./osecret.txt:/secret.txt
   transcoder:
     depends_on:
       - orchestrator
     image: livepeer/go-livepeer:master
-    command: '-transcoder -network offchain -orchAddr orchestrator:8935 -orchSecret test -nvidia 0'
+    command: '-transcoder -network rinkeby -orchAddr orchestrator:8935 -orchSecret /secret.txt -nvidia 0'
+    volumes:
+      - ./osecret.txt:/secret.txt
   broadcaster:
     depends_on:
       - orchestrator
       - transcoder
     image: livepeer/go-livepeer:master
-    command: '-broadcaster -rtmpAddr broadcaster -orchAddr orchestrator:8935 -cliAddr broadcaster:7936 -httpAddr broadcaster:8936'
+    command: '-broadcaster -network rinkeby -rtmpAddr broadcaster -orchAddr orchestrator:8935 -cliAddr broadcaster:7936 -httpAddr broadcaster:8936 -depositMultiplier 1 -ethPassword=/root/pw.txt -cliAddr 0.0.0.0:7936 -monitor=true'
     ports:
       - 1935:1935
       - 7936:7936
       - 8936:8936
+    volumes:
+      - bcstroot:/root
+      - ./pw:/root/pw.txt
   cadvisor:
     image: 'google/cadvisor:latest'
     ports:
@@ -78,3 +87,6 @@ services:
     restart: unless-stopped
     volumes:
       - './prometheus.yml:/etc/prometheus/prometheus.yml'
+volumes:
+  orchroot:
+  bcstroot:

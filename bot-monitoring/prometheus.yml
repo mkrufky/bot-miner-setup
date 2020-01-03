@@ -21,7 +21,7 @@ scrape_configs:
         labels:
           livepeer_node_type: orchestrator
       - targets:
-          - broadcaster:7935
+          - broadcaster:7936
         labels:
           livepeer_node_type: broadcaster
   - job_name: cadvisor
