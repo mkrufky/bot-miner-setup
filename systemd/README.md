@@ -1,6 +1,6 @@
 ***SYSTEMD***
 
-We're going to run `go-livepeer` as a systemd service.  We will have to creata a separate service file for each component of our B/O/T or B/OT network.
+We're going to run `go-livepeer` as a systemd service.  We will have to create a separate service file for each component of our B/O/T or B/OT network.
 
 We can run the orchestrator and transcoder as separate services, or together as a single service.
 
