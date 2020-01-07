@@ -183,7 +183,7 @@ Restart=always
 RestartSec=90s
 Environment="LD_LIBRARY_PATH=/usr/local/lib/"
 WorkingDirectory=/home/livepeer/go-livepeer/
-ExecStart=/home/livepeer/go-livepeer/livepeer -network rinkeby -broadcaster -orchAddr 127.0.0.1:8935 -cliAddr 127.0.0.1:7936 -httpAddr 127.0.0.1:8936
+ExecStart=/home/livepeer/go-livepeer/livepeer -network rinkeby -broadcaster -orchAddr 127.0.0.1:8935 -cliAddr :7936 -httpAddr 127.0.0.1:8936
 
 [Install]
 WantedBy=default.target
@@ -192,7 +192,7 @@ WantedBy=default.target
 Update the `ExecStart` line to match your configuration. To use offline mode rather than the rinkeby testnet, replace the `ExecStart` line with the following:
 
 ```
-ExecStart=/home/livepeer/go-livepeer/livepeer -network offchain -broadcaster -orchAddr 127.0.0.1:8935 -cliAddr 127.0.0.1:7936  -httpAddr 127.0.0.1:8936
+ExecStart=/home/livepeer/go-livepeer/livepeer -network offchain -broadcaster -orchAddr 127.0.0.1:8935 -cliAddr :7936  -httpAddr 127.0.0.1:8936
 ```
 
 * Save the document and exit `vi` by first hitting the `ESC` key, then `:` followed by `wq` and `<ENTER>`
