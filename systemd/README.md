@@ -183,7 +183,7 @@ Restart=always
 RestartSec=90s
 Environment="LD_LIBRARY_PATH=/usr/local/lib/"
 WorkingDirectory=/home/livepeer/go-livepeer/
-ExecStart=/home/livepeer/go-livepeer/livepeer -network rinkeby -broadcaster -orchAddr 127.0.0.1:8935 -cliAddr 127.0.0.1:7936 -httpAddr 127.0.0.1:8936 -depositMultiplier 1
+ExecStart=/home/livepeer/go-livepeer/livepeer -network rinkeby -broadcaster -orchAddr 127.0.0.1:8935 -cliAddr 127.0.0.1:7936 -httpAddr 127.0.0.1:8936
 
 [Install]
 WantedBy=default.target

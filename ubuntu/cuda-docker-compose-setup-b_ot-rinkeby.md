@@ -85,7 +85,7 @@ services:
     depends_on:
       - orchtran
     image: livepeer/go-livepeer:master
-    command: '-broadcaster -network rinkeby -rtmpAddr broadcaster -orchAddr orchtran:8935 -cliAddr broadcaster:7936 -httpAddr broadcaster:8936 -depositMultiplier 1'
+    command: '-broadcaster -network rinkeby -rtmpAddr broadcaster -orchAddr orchtran:8935 -cliAddr broadcaster:7936 -httpAddr broadcaster:8936'
     ports:
       - 1935:1935
       - 7936:7936
@@ -160,7 +160,7 @@ echo MyEthPassPhrase > passphrase_bcst.txt
 * Edit the `docker-compose.yml` to add the `ethPassword` argument to the broadcaster command line.  The new command should look like this:
 
 ```bash
--broadcaster -network rinkeby -rtmpAddr broadcaster -orchAddr orchestrator:8935 -cliAddr broadcaster:7936 -httpAddr broadcaster:8936 -depositMultiplier 1 -ethPassword=/root/pw.txt
+-broadcaster -network rinkeby -rtmpAddr broadcaster -orchAddr orchestrator:8935 -cliAddr broadcaster:7936 -httpAddr broadcaster:8936 -ethPassword=/root/pw.txt
 ```
 
 Now, we must fund the accounts with ETH and LPT.  We'll have to bring up the B/O/T network and then execute the CLI in another shell.
