@@ -29,7 +29,7 @@ Restart=always
 RestartSec=90s
 Environment="LD_LIBRARY_PATH=/usr/local/lib/"
 WorkingDirectory=/home/livepeer/go-livepeer/
-ExecStart=/home/livepeer/go-livepeer/livepeer -network rinkeby -orchestrator -orchSecret osecret.txt -pricePerUnit 1 -initializeRound true -serviceAddr 127.0.0.1:8935 -orchAddr 0.0.0.0:8935
+ExecStart=/home/livepeer/go-livepeer/livepeer -network rinkeby -orchestrator -orchSecret osecret.txt -pricePerUnit 1 -initializeRound true -serviceAddr 127.0.0.1:8935
 
 [Install]
 WantedBy=default.target
@@ -38,7 +38,7 @@ WantedBy=default.target
 Update the `ExecStart` line to match your configuration. To use offline mode rather than the rinkeby testnet, replace the `ExecStart` line with the following:
 
 ```
-ExecStart=/home/livepeer/go-livepeer/livepeer -network offchain -orchestrator -orchSecret osecret.txt -serviceAddr 127.0.0.1:8935 -orchAddr 0.0.0.0:8935
+ExecStart=/home/livepeer/go-livepeer/livepeer -network offchain -orchestrator -orchSecret osecret.txt -serviceAddr 127.0.0.1:8935
 ```
 
 * Save the document and exit `vi` by first hitting the `ESC` key, then `:` followed by `wq` and `<ENTER>`
@@ -140,7 +140,7 @@ WantedBy=default.target
 Update the `ExecStart` line to match your configuration. To use offline mode rather than the rinkeby testnet, replace the `ExecStart` line with the following:
 
 ```
-ExecStart=/home/livepeer/go-livepeer/livepeer -network offchain -orchestrator -transcoder -serviceAddr 127.0.0.1:8935 -orchAddr 0.0.0.0:8935 -nvidia 0
+ExecStart=/home/livepeer/go-livepeer/livepeer -network offchain -orchestrator -transcoder -serviceAddr 127.0.0.1:8935 -nvidia 0
 ```
 
 * Save the document and exit `vi` by first hitting the `ESC` key, then `:` followed by `wq` and `<ENTER>`
