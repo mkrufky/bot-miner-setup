@@ -4,6 +4,12 @@ We're going to run `go-livepeer` as a systemd service.  We will have to create a
 
 We can run the orchestrator and transcoder as separate services, or together as a single service.
 
+Be sure to create the following files within the `/home/livepeer/go-livepeer/` directory:
+
+* osecret.txt - contains your orchestrator secret
+
+* pw.txt - contains your eth passphrase
+
 To run as separate services:
 
 * Create the `orchestrator.service` file:
@@ -29,7 +35,7 @@ Restart=always
 RestartSec=90s
 Environment="LD_LIBRARY_PATH=/usr/local/lib/"
 WorkingDirectory=/home/livepeer/go-livepeer/
-ExecStart=/home/livepeer/go-livepeer/livepeer -network rinkeby -orchestrator -orchSecret osecret.txt -pricePerUnit 1 -initializeRound true -serviceAddr 127.0.0.1:8935
+ExecStart=/home/livepeer/go-livepeer/livepeer -network rinkeby -orchestrator -orchSecret osecret.txt -pricePerUnit 1 -initializeRound true -serviceAddr 127.0.0.1:8935 -ethPassword pw.txt
 
 [Install]
 WantedBy=default.target
@@ -131,7 +137,7 @@ Restart=always
 RestartSec=90s
 Environment="LD_LIBRARY_PATH=/usr/local/lib/"
 WorkingDirectory=/home/livepeer/go-livepeer/
-ExecStart=/home/livepeer/go-livepeer/livepeer -network rinkeby -orchestrator -transcoder -pricePerUnit 1 -nvidia 0 -initializeRound true -serviceAddr 127.0.0.1:8935
+ExecStart=/home/livepeer/go-livepeer/livepeer -network rinkeby -orchestrator -transcoder -pricePerUnit 1 -nvidia 0 -initializeRound true -serviceAddr 127.0.0.1:8935 -ethPassword pw.txt
 
 [Install]
 WantedBy=default.target
@@ -183,7 +189,7 @@ Restart=always
 RestartSec=90s
 Environment="LD_LIBRARY_PATH=/usr/local/lib/"
 WorkingDirectory=/home/livepeer/go-livepeer/
-ExecStart=/home/livepeer/go-livepeer/livepeer -network rinkeby -broadcaster -orchAddr 127.0.0.1:8935 -cliAddr :7936 -httpAddr 127.0.0.1:8936
+ExecStart=/home/livepeer/go-livepeer/livepeer -network rinkeby -broadcaster -orchAddr 127.0.0.1:8935 -cliAddr :7936 -httpAddr 127.0.0.1:8936 -ethPassword pw.txt
 
 [Install]
 WantedBy=default.target
