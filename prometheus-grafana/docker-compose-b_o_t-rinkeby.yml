@@ -22,7 +22,7 @@ services:
       - orchestrator
       - transcoder
     image: livepeer/go-livepeer:master
-    command: '-broadcaster -network rinkeby -rtmpAddr broadcaster -orchAddr orchestrator:8935 -cliAddr broadcaster:7936 -httpAddr broadcaster:8936 -depositMultiplier 1 -ethPassword=/root/pw.txt -cliAddr 0.0.0.0:7936 -monitor=true'
+    command: '-broadcaster -network rinkeby -rtmpAddr broadcaster -orchAddr orchestrator:8935 -cliAddr broadcaster:7936 -httpAddr broadcaster:8936 -depositMultiplier 1 -ethPassword=/root/pw.txt -monitor=true'
     ports:
       - 1935:1935
       - 7936:7936

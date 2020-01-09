@@ -12,7 +12,7 @@ services:
     depends_on:
       - orchtran
     image: livepeer/go-livepeer:master
-    command: '-broadcaster -network offchain -rtmpAddr broadcaster -orchAddr orchtran:8935 -cliAddr broadcaster:7936 -httpAddr broadcaster:8936 -cliAddr 0.0.0.0:7936 -monitor=true'
+    command: '-broadcaster -network offchain -rtmpAddr broadcaster -orchAddr orchtran:8935 -cliAddr broadcaster:7936 -httpAddr broadcaster:8936 -monitor=true'
     ports:
       - 1935:1935
       - 7936:7936
